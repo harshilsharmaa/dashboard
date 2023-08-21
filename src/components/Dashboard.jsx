@@ -6,7 +6,6 @@ import DashboardContainer from './DashboardContainer'
 const Dashboard = () => {
 
     const [openSidebar, setOpenSidebar] = useState(true);
-    console.log(openSidebar);
 
     const toogleHandler = () => {
         setOpenSidebar(!openSidebar);

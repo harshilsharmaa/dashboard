@@ -1,7 +1,12 @@
 import React from 'react'
 import {notificationIcon, userIcon, searchIcon} from '../utils/icons'
+import { useSelector } from 'react-redux'
 
 const DashboardNav = ({openSidebar, toogleHandler}) => {
+
+    const {currentUser} = useSelector((store)=>store.user);
+    // console.log(currentUser)
+
   return (
     <div className='flex justify-between items-center mt-2 px-8 sm:pl-6'>
         {
@@ -20,11 +25,19 @@ const DashboardNav = ({openSidebar, toogleHandler}) => {
                 <div className='bg-white rounded-r-lg '>{searchIcon}</div>
             </div>
             <span className='ml-5'>{notificationIcon}</span>
-            <img
-                className="h-8 ml-5"
-                src="https://cdn-icons-png.flaticon.com/512/552/552721.png"
+            {
+                currentUser?.photoURL? <img
+                className="h-8 ml-5 rounded-full"
+                src={currentUser.photoURL}
                 alt="user icon"
-            />
+                />
+                :
+                <img
+                    className="h-8 ml-5"
+                    src="https://cdn-icons-png.flaticon.com/512/552/552721.png"
+                    alt="user icon"
+                />
+            }
         </div>
     </div>
   )

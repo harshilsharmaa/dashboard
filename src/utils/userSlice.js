@@ -24,6 +24,7 @@ export const setUpAuthObserver = () => (dispatch) => {
           uid: user.uid,
           displayName: user.displayName,
           email: user.email,
+          photoURL: user.photoURL
         };
         dispatch({ type: 'user/LOGIN_SUCCESS', payload: userData });
       } else {
