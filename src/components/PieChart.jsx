@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { useEffect, useState } from 'react';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -30,29 +31,36 @@ const options = {
     }
   }
 }
-const PieChart = ({  }) => {
+const PieChart = ({dataSet}) => {
 
   const labels = ["Super Hoodies", "Custom Short Pants", "Basic Tees"];
 
-  let data = {
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: [14, 31, 55],
-        backgroundColor: ['#EE8484', '#F6DC7D', '#98D89E'],
-        hoverOffset: 4,
-        borderWidth: 0,
-        offset: true,
-      }
-    ]
-  };
+  const [data, setData] = useState(null);
+
+  useEffect(()=>{
+    let data = {
+      labels,
+      datasets: [
+        {
+          label: 'Dataset 1',
+          data: dataSet,
+          backgroundColor: ['#EE8484', '#F6DC7D', '#98D89E'],
+          hoverOffset: 4,
+          borderWidth: 0,
+          offset: true,
+        }
+      ]
+    };
+
+    setData(data)
+  },[dataSet])
+
 
 
   return (
     <div className="w-full h-full canvas-div pie" id="all_three_pie-div d-inline-block">
       {
-        <Pie options={options} data={data} />
+        data && <Pie options={options} data={data} />
       }
     </div>
   )

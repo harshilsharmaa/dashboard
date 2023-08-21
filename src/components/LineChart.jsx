@@ -50,7 +50,7 @@ const options = {
   }
 };
 
-const LineChart = ({}) => {
+const LineChart = ({dataObj}) => {
 
 
     const [data, setData] = useState(null);
@@ -62,9 +62,8 @@ const LineChart = ({}) => {
           datasets: [
             {
               label: 'Clicks',
-              data: [100,200,250,300],
-              borderColor: 'rgb(255, 99, 132)',
-              borderColor: 'cyan',
+              data: dataObj.dataSet1,
+              borderColor: 'rgb(74 222 128)',
               borderWidth: 2,
               backgroundColor: 'rgba(255, 99, 132, 0.5)',
               tension: 0,
@@ -72,9 +71,8 @@ const LineChart = ({}) => {
             },
             {
               label: 'Clicks',
-              data: [100,300,180,500,280],
-              borderColor: 'red',
-              borderColor: 'red',
+              data: dataObj.dataSet2,
+              borderColor: 'rgb(248 113 113)',
               borderWidth: 2,
               backgroundColor: 'rgba(255, 99, 132, 0.5)',
               tension: 0,
@@ -84,7 +82,7 @@ const LineChart = ({}) => {
         };
 
         setData(data);
-    },[])
+    },[dataObj])
 
 
   return (

@@ -27,9 +27,9 @@ function App() {
       currentUser?<Outlet />:<Login />
     }
     </>    
-
-  );
-}
+    
+    );
+  }
 
 const appRouter = createBrowserRouter([
   {
